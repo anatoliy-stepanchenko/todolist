@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyText
+  dead_line: 2020-10-06 17:12:34
+  completed: false
+  todo_list: one
+
+two:
+  name: MyText
+  dead_line: 2020-10-06 17:12:34
+  completed: false
+  todo_list: two
