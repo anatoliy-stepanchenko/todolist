@@ -6,8 +6,8 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @todo_list.user_id %>
+  <strong>Todos:</strong>
+  <%= link_to 'todos', todo_list_todos_path(@todo_list) %>
 </p>
 
 <%= link_to 'Edit', edit_todo_list_path(@todo_list) %> |

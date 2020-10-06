@@ -20,9 +20,9 @@
         <td><%= todo.dead_line %></td>
         <td><%= todo.completed %></td>
         <td><%= todo.todo_list_id %></td>
-        <td><%= link_to 'Show', todo %></td>
-        <td><%= link_to 'Edit', edit_todo_path(todo) %></td>
-        <td><%= link_to 'Destroy', todo, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', [@todo_list, todo] %></td>
+        <td><%= link_to 'Edit', edit_todo_list_todo_path(@todo_list, todo) %></td>
+        <td><%= link_to 'Destroy', [@todo_list, todo], method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,5 @@
 
 <br>
 
-<%= link_to 'New Todo', new_todo_path %>
+<%= link_to 'New Todo', new_todo_list_todo_path %>
+<%= link_to 'Back', @todo_list %>
