@@ -19,8 +19,12 @@ class Todos extends React.Component {
             return <Todo key={todo.id} todo={todo}/>
         });
         return(
-            <div>
-                {todos}
+            <div className="task-list">
+                <table className='tasks-table'>
+                    <tbody>
+                        {todos}
+                    </tbody>
+                </table>
             </div>
         )
     }
