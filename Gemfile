@@ -26,6 +26,7 @@ gem 'jbuilder', '~> 2.7'
 # gem 'image_processing', '~> 1.2'
 
 gem 'devise'
+gem 'devise-bootstrap-views', '~> 1.0'
 
 gem 'react-rails'
 
