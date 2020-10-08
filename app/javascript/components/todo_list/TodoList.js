@@ -5,6 +5,21 @@ class TodoList extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleDelete = this.handleDelete.bind(this);
+    }
+
+    handleDelete() {
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+        fetch('/todo_lists/' + this.props.id + '.json', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrf
+            }
+        }).then(()=> {
+            this.props.onChange();
+        })
     }
 
     render(){
@@ -25,7 +40,7 @@ class TodoList extends React.Component {
     data-target='#editProject' type='button'/>
                             </li>
                             <li><a className="delete"
-    // onClick='deleteProject(this.id.split("_")[1])'
+    onClick={this.handleDelete}
     type='button'/></li>
                         </ul>
                     </div>

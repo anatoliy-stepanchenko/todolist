@@ -26,7 +26,7 @@ class TodoLists extends React.Component {
 
     render(){
         const todoLists = this.state.todo_lists.map((todo_list) => {
-            return <TodoList key={todo_list.id} id={todo_list.id} name={todo_list.name}/>
+            return <TodoList key={todo_list.id} id={todo_list.id} name={todo_list.name} onChange={this.refreshTodoLists}/>
         });
         return(
             <div>
