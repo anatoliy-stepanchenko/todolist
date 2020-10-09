@@ -14,7 +14,7 @@ class Todo extends React.Component {
                 </td>
                 <td className='table-name'>
                     <div className='left-border'>
-                        <div className='task-name-text'>
+                        <div className='task-name-text text-left'>
                             <label>{this.props.todo.name}</label>
                             <span className="deadline hidden"></span>
                         </div>
