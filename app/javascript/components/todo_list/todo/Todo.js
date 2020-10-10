@@ -4,6 +4,21 @@ class Todo extends React.Component {
 
     constructor(props) {
         super(props);
+        this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
+    }
+
+    handleDeleteTodo() {
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+
+        fetch('/todo_lists/' + this.props.todo_list_id + '/todos/' + this.props.todo.id + '.json', {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrf
+            }
+        }).then(()=> {
+            this.props.onChange();
+        })
     }
 
     render(){
@@ -38,7 +53,7 @@ class Todo extends React.Component {
                             </li>
                             <li style={{borderLeft: '1px solid #ccc'}}>
                                 <a className="mybutton"
-                                   // onClick="deleteTask(this.id.split('_')[2],this.id.split('_')[1])"
+                                   onClick={this.handleDeleteTodo}
                                    type="button">
                                     <span className='glyphicon glyphicon-trash'/>
                                 </a>

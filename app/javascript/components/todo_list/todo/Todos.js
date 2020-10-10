@@ -23,7 +23,7 @@ class Todos extends React.Component {
     }
     render(){
         const todos = this.state.todos.map((todo) => {
-            return <Todo key={todo.id} todo={todo}/>
+            return <Todo key={todo.id} todo={todo} todo_list_id={this.props.todo_list_id} onChange={this.refreshTodos}/>
         });
         return(
             <div>
