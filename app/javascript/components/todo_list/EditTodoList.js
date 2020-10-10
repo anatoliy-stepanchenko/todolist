@@ -2,26 +2,27 @@ import React from "react"
 import {Modal} from "react-bootstrap";
 import {Button} from "react-bootstrap";
 
-class NewTodoList extends React.Component {
+class EditTodoList extends React.Component {
     constructor(props, context) {
         super(props, context);
 
         this.handleShow = this.handleShow.bind(this);
         this.handleClose = this.handleClose.bind(this);
-        this.handleCreateTodoList = this.handleCreateTodoList.bind(this);
+        this.handleEditTodoList = this.handleEditTodoList.bind(this);
         this.handleNameChange = this.handleNameChange.bind(this);
 
         this.state = {
-            show: false
+            show: false,
+            name: this.props.todo_list_name
         };
     }
 
-    handleCreateTodoList() {
+    handleEditTodoList() {
         let body = JSON.stringify({name: this.state.name})
         const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
 
-        fetch('/todo_lists.json', {
-            method: 'POST',
+        fetch('/todo_lists/' + this.props.todo_list_id + '.json', {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
                 'X-CSRF-Token': csrf
@@ -50,15 +51,11 @@ class NewTodoList extends React.Component {
     render() {
         return (
             <div>
-                <div className="col-xs-12 addprojectdiv">
-                    <a className="btn btn-primary add-project" onClick={this.handleShow}><span className="icon-plus"/>
-                        Add TODO List
-                    </a>
-                </div>
+                <a className="edit" type='button' onClick={this.handleShow}/>
 
                 <Modal show={this.state.show} onHide={this.handleClose}>
                     <Modal.Header closeButton>
-                        <Modal.Title>Add TodoList</Modal.Title>
+                        <Modal.Title>Edit TodoList</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
                         <form className="form-horizontal">
@@ -67,14 +64,14 @@ class NewTodoList extends React.Component {
                                        htmlFor="addProjectName"
                                        style={{alignSelf: 'center'}}>Name:</label>
                                 <div className="col-md-9 col-sm-9">
-                                    <input type="text" className="form-control" onChange={this.handleNameChange}/>
+                                    <input type="text" className="form-control" onChange={this.handleNameChange} value={this.state.name}/>
                                 </div>
                             </div>
                         </form>
                     </Modal.Body>
                     <Modal.Footer>
                         <Button className="btn-large btn-primary" type="button"
-                                data-dismiss="modal" onClick={this.handleCreateTodoList}>Ok
+                                data-dismiss="modal" onClick={this.handleEditTodoList}>Ok
                         </Button>
                         <Button className="btn-default" onClick={this.handleClose}>
                             Close
@@ -86,4 +83,4 @@ class NewTodoList extends React.Component {
     }
 }
 
-export default NewTodoList
+export default EditTodoList

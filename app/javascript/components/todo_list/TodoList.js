@@ -1,5 +1,6 @@
 import React from "react"
 import Todos from "./todo/Todos";
+import EditTodoList from "./EditTodoList";
 
 class TodoList extends React.Component {
 
@@ -34,10 +35,8 @@ class TodoList extends React.Component {
                     </div>
                     <div className="control">
                         <ul>
-                            <li><a className="edit"
-    // onClick='editProject(this.id)'
-    data-toggle='modal'
-    data-target='#editProject' type='button'/>
+                            <li>
+                                <EditTodoList todo_list_name={this.props.name} todo_list_id={this.props.id} onChange={this.props.onChange}/>
                             </li>
                             <li><a className="delete"
     onClick={this.handleDelete}
