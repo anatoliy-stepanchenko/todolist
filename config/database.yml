@@ -78,11 +78,11 @@ test:
 #
 # You can use this database configuration with:
 #
-#   production:
-#     url: <%= ENV['DATABASE_URL'] %>
-#
 production:
-  <<: *default
-  database: ruby_on_rails_postgres_gitpod_production
-  username: ruby_on_rails_postgres_gitpod
-  password: <%= ENV['RUBY_ON_RAILS_POSTGRES_GITPOD_DATABASE_PASSWORD'] %>
+ url: <%= ENV['DATABASE_URL'] %>
+#
+#production:
+#  <<: *default
+#  database: ruby_on_rails_postgres_gitpod_production
+#  username: ruby_on_rails_postgres_gitpod
+#  password: <%#= ENV['RUBY_ON_RAILS_POSTGRES_GITPOD_DATABASE_PASSWORD'] %>
