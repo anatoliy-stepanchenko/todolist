@@ -45,20 +45,6 @@ class TodoList extends React.Component {
                         </ul>
                     </div>
                 </div>
-                <div className="new_task">
-                    <div className="create-task-header">
-                        <div className="create-task-in input-group">
-                            <input className="form-control"
-                                   placeholder="Start typing here to create a task..."
-                                   type="text"/>
-                            <span className="input-group-btn add-task">
-                                <button className="btn add-task"
-                                        // onClick='addTask(this.id)'
-                                        id='addTaskButton_projectId_'>Add Task</button>
-                            </span>
-                        </div>
-                    </div>
-                </div>
                 <Todos todo_list_id={this.props.id}/>
             </div>
         )

@@ -33,7 +33,7 @@ class TodosController < ApplicationController
     respond_to do |format|
       if @todo.save
         format.html { redirect_to todo_list_todo_path(@todo_list, @todo), notice: 'Todo was successfully created.' }
-        format.json { render :show, status: :created, location: @todo }
+        format.json { render :show, status: :created, location: [@todo_list, @todo] }
       else
         format.html { render :new }
         format.json { render json: @todo.errors, status: :unprocessable_entity }
