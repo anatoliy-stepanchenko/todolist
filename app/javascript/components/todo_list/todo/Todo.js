@@ -1,4 +1,5 @@
 import React from "react"
+import EditTodo from "./EditTodo";
 
 class Todo extends React.Component {
 
@@ -80,12 +81,7 @@ class Todo extends React.Component {
                                 </a>
                             </li>
                             <li style={{borderLeft: '1px solid #ccc'}}>
-                                <a className="mybutton"
-                                   // onClick="editTask(this.id.split('_')[2], this.id.split('_')[1])"
-                                   data-toggle='modal'
-                                   data-target='#editTask'>
-                                    <span className='glyphicon glyphicon-pencil'/>
-                                </a>
+                                <EditTodo onChange={this.props.onChange} todo_list_id={this.props.todo_list_id} todo={this.props.todo}/>
                             </li>
                             <li style={{borderLeft: '1px solid #ccc'}}>
                                 <a className="mybutton"
