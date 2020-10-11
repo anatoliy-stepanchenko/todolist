@@ -5,6 +5,7 @@ class Todo extends React.Component {
     constructor(props) {
         super(props);
         this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
+        this.handleCompletedChange = this.handleCompletedChange.bind(this);
         this.handleMouseLeave = this.handleMouseLeave.bind(this);
         this.handleMouseEnter = this.handleMouseEnter.bind(this);
         this.state = {
@@ -26,6 +27,22 @@ class Todo extends React.Component {
         })
     }
 
+    handleCompletedChange(e) {
+        const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content");
+        let body = JSON.stringify({completed: e.target.checked})
+
+        fetch('/todo_lists/' + this.props.todo_list_id + '/todos/' + this.props.todo.id + '.json', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-Token': csrf
+            },
+            body: body,
+        }).then(()=> {
+            this.props.onChange();
+        })
+    }
+
     handleMouseEnter() {
         this.setState({
             hovered: true,
@@ -42,12 +59,12 @@ class Todo extends React.Component {
         return(
             <tr className={`tasks-row ${this.state.hovered ? 'mouseovertask' : ''}`} key={this.props.todo.id} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
                 <td className='table-checkBox'>
-                    <input type="checkbox" value={!!this.props.todo.completed}/>
+                    <input type="checkbox" checked={!!this.props.todo.completed} onChange={this.handleCompletedChange}/>
                 </td>
                 <td className='table-name'>
                     <div className='left-border'>
                         <div className='task-name-text text-left'>
-                            <label>{this.props.todo.name}</label>
+                            <label style={this.props.todo.completed ? {textDecoration: 'line-through'} : null}>{this.props.todo.name}</label>
                             {this.props.todo.dead_line != null &&
                                 <span className="deadline">{this.props.todo.dead_line}</span>
                             }
