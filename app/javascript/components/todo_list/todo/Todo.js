@@ -48,7 +48,9 @@ class Todo extends React.Component {
                     <div className='left-border'>
                         <div className='task-name-text text-left'>
                             <label>{this.props.todo.name}</label>
-                            <span className="deadline hidden"></span>
+                            {this.props.todo.dead_line != null &&
+                                <span className="deadline">{this.props.todo.dead_line}</span>
+                            }
                         </div>
                     </div>
                 </td>
