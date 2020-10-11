@@ -7,6 +7,11 @@ class TodoList extends React.Component {
     constructor(props) {
         super(props);
         this.handleDelete = this.handleDelete.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.state = {
+            hovered: false,
+        }
     }
 
     handleDelete() {
@@ -23,17 +28,29 @@ class TodoList extends React.Component {
         })
     }
 
+    handleMouseEnter() {
+        this.setState({
+            hovered: true,
+        });
+    }
+
+    handleMouseLeave() {
+        this.setState({
+            hovered: false,
+        });
+    }
+
     render(){
         return(
             <div className="project" key={this.props.id}
                  style={{display: 'block', paddingBottom: '25px', paddingTop: '5px'}}>
-                <div className="project-header">
+                <div className="project-header" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
                     <div style={{cursor: 'move'}} className="project-field">
                         <h2>
                             {this.props.name}
                         </h2>
                     </div>
-                    <div className="control">
+                    <div className={`control ${this.state.hovered ? '' : 'hidden'}`}>
                         <ul>
                             <li>
                                 <EditTodoList todo_list_name={this.props.name} todo_list_id={this.props.id} onChange={this.props.onChange}/>
