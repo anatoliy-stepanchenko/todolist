@@ -5,6 +5,11 @@ class Todo extends React.Component {
     constructor(props) {
         super(props);
         this.handleDeleteTodo = this.handleDeleteTodo.bind(this);
+        this.handleMouseLeave = this.handleMouseLeave.bind(this);
+        this.handleMouseEnter = this.handleMouseEnter.bind(this);
+        this.state = {
+            hovered: false,
+        }
     }
 
     handleDeleteTodo() {
@@ -21,11 +26,23 @@ class Todo extends React.Component {
         })
     }
 
+    handleMouseEnter() {
+        this.setState({
+            hovered: true,
+        });
+    }
+
+    handleMouseLeave() {
+        this.setState({
+            hovered: false,
+        });
+    }
+
     render(){
         return(
-            <tr className='tasks-row' key={this.props.todo.id}>
+            <tr className={`tasks-row ${this.state.hovered ? 'mouseovertask' : ''}`} key={this.props.todo.id} onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
                 <td className='table-checkBox'>
-                    <input type="checkbox" value={this.props.todo.completed}/>
+                    <input type="checkbox" value={!!this.props.todo.completed}/>
                 </td>
                 <td className='table-name'>
                     <div className='left-border'>
@@ -36,7 +53,7 @@ class Todo extends React.Component {
                     </div>
                 </td>
                 <td className='table-controls'>
-                    <div className="row">
+                    <div className={`row ${this.state.hovered ? '' : 'hidden'}`}>
                         <ul>
                             <li>
                                 <a style={{cursor: 'move'}} className="mybutton">
