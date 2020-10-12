@@ -1,5 +1,6 @@
 import React from "react"
 import EditTodo from "./EditTodo";
+import moment from "moment";
 
 class Todo extends React.Component {
 
@@ -67,7 +68,7 @@ class Todo extends React.Component {
                         <div className='task-name-text text-left'>
                             <label style={this.props.todo.completed ? {textDecoration: 'line-through'} : null}>{this.props.todo.name}</label>
                             {this.props.todo.dead_line != null &&
-                                <span className="deadline">{new Date(this.props.todo.dead_line).toLocaleString()}</span>
+                                <span className="deadline">{ moment(new Date(this.props.todo.dead_line)).format('MMMM DD, yyyy HH:mm')}</span>
                             }
                         </div>
                     </div>
