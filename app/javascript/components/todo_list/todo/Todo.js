@@ -77,7 +77,7 @@ class Todo extends React.Component {
                     <div className={`row ${this.state.hovered ? '' : 'hidden'}`}>
                         <ul>
                             <li>
-                                <a style={{cursor: 'move'}} className="mybutton">
+                                <a style={{cursor: 'move'}} className="mybutton dragable_row_selector">
                                     <span className='glyphicon glyphicon-sort'/>
                                 </a>
                             </li>

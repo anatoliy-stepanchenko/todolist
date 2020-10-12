@@ -1,6 +1,7 @@
 import React from "react"
 import Todo from "./Todo";
 import NewTodo from "./NewTodo";
+import { ReactSortable } from "react-sortablejs";
 
 class Todos extends React.Component {
 
@@ -30,9 +31,9 @@ class Todos extends React.Component {
                 <NewTodo todo_list_id={this.props.todo_list_id} onChange={this.refreshTodos}/>
                 <div className="task-list">
                     <table className='tasks-table'>
-                        <tbody>
-                        {todos}
-                        </tbody>
+                        <ReactSortable tag={'tbody'} handle={'.dragable_row_selector'} list={this.state.todos} setList={(newState) => this.setState({ todos: newState })}>
+                            {todos}
+                        </ReactSortable>
                     </table>
                 </div>
             </div>
