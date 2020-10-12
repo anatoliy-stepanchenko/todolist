@@ -798,3 +798,28 @@ button, input, optgroup, select, textarea {
 .table-controls a:hover {
   color:lightgray;
 }
+
+.react-datepicker-wrapper {
+    width: 100%;
+}
+
+.react-datepicker__input-container {
+    width: 100%;
+    display: table;
+}
+
+.react-datepicker__input-container input {
+    border-radius: 4px;
+}
+
+
+.form-inline .react-datepicker__input-container {
+    width: auto;
+    display: inline;
+}
+
+.react-datepicker__input-container input.form-control {
+    margin-bottom: -5px !important;
+    border-bottom-left-radius: 4px !important;
+    border-top-left-radius: 4px !important;
+}
