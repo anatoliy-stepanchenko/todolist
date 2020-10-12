@@ -67,7 +67,7 @@ class Todo extends React.Component {
                         <div className='task-name-text text-left'>
                             <label style={this.props.todo.completed ? {textDecoration: 'line-through'} : null}>{this.props.todo.name}</label>
                             {this.props.todo.dead_line != null &&
-                                <span className="deadline">{this.props.todo.dead_line}</span>
+                                <span className="deadline">{new Date(this.props.todo.dead_line).toLocaleString()}</span>
                             }
                         </div>
                     </div>
