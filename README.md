@@ -1,3 +1,5 @@
-[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://https://github.com/anatoliy-stepanchenko/ruby-on-rails-postgres-gitpod)
+This is a simple to-do list that will make your life easier. 
+You can add, edit and delete ToDos.
 
-# ruby-on-rails-postgres-gitpod
+DEMO:
+https://todolist-anatoliy.herokuapp.com/
