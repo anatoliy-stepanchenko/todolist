@@ -45,7 +45,7 @@ class TodoList extends React.Component {
             <div className="project" key={this.props.id}
                  style={{display: 'block', paddingBottom: '25px', paddingTop: '5px'}}>
                 <div className="project-header" onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}>
-                    <div style={{cursor: 'move'}} className="project-field">
+                    <div style={{cursor: 'move'}} className="project-field dragable_row_selector">
                         <h2>
                             {this.props.name}
                         </h2>

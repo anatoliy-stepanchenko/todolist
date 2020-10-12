@@ -1,6 +1,7 @@
 import React from "react"
 import TodoList from "./TodoList";
 import NewTodoList from "./NewTodoList";
+import {ReactSortable} from "react-sortablejs";
 
 class TodoLists extends React.Component {
 
@@ -30,7 +31,9 @@ class TodoLists extends React.Component {
         });
         return(
             <div>
-                {todoLists}
+                <ReactSortable tag={'tbody'} handle={'.dragable_row_selector'} list={this.state.todo_lists} setList={(newState) => this.setState({ todo_lists: newState })}>
+                    {todoLists}
+                </ReactSortable>
                 <NewTodoList onChange={this.refreshTodoLists}/>
             </div>
         )
