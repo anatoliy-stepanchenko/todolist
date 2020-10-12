@@ -361,7 +361,7 @@ ul, ol {
   width: 16px;
   height: 16px;
   position: relative;
-  cursor: hand;
+  cursor: pointer;
 }
 
 a {
