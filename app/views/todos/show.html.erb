@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @todo.name %>
+</p>
+
+<p>
+  <strong>Dead line:</strong>
+  <%= @todo.dead_line %>
+</p>
+
+<p>
+  <strong>Completed:</strong>
+  <%= @todo.completed %>
+</p>
+
+<p>
+  <strong>Todo list:</strong>
+  <%= @todo.todo_list_id %>
+</p>
+
+<%= link_to 'Edit', edit_todo_list_todo_path(@todo_list, @todo) %> |
+<%= link_to 'Back', todo_list_todos_path %>
